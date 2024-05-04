@@ -1,0 +1,5 @@
+CREATE TABLE todo (
+    id INTEGER PRIMARY KEY,
+    value TEXT DEFAULT '',
+    completed INTEGER DEFAULT FALSE
+);

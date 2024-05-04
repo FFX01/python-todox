@@ -1,0 +1,92 @@
+:root {
+    --link-color: #F90093;
+    --link-hover-color: #FF47B3;
+    --secondary-color: #028090;
+}
+
+html {
+    width: 100vw;
+    max-width: 100%;
+    background-color: #252627;
+    color: #cccccc;
+    font-family: "Source Code Pro", monospace;
+    font-size: 14pt;
+    scrollbar-gutter: stable;
+}
+
+body {
+    width: 100vw;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.link {
+    color: var(--link-color);
+}
+.link:hover {
+    color: var(--link-hover-color);
+    text-shadow: 0 0 8px var(--link-hover-color);
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+a {
+    text-decoration: none;
+}
+
+.todoList {
+    .item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        .delete {
+            display: block;
+            font-size: 20pt;
+            color: red;
+            cursor: pointer;
+            margin-left: 0.5em;
+        }
+        .delete:hover {
+            color: rgb(255, 100, 100);
+        }
+        .value {
+            margin-left: 1em;
+        }
+    }
+}
+
+input {
+    color: inherit;
+    border: 1px solid var(--link-color);
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #10101a;
+}
+input[type="submit"] {
+    background-color: transparent;
+    border: 0;
+    color: var(--link-color);
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    color: var(--link-hover-color);
+    text-shadow: 0 0 8px var(--link-hover-color);
+}
+input::placeholder {
+    color: inherit;
+}
+input:focus-visible {
+    border-color: var(--link-color);
+    outline: none;
+    box-shadow: 0 0 8px var(--link-hover-color);
+}
+
+.container {
+    padding: 1em 2em;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Python TodoX</title>
+    <script src="https://unpkg.com/htmx.org@1.9.12"
+        integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Python TodoX</h1>
+    </div>
+    <div class="container">
+        <div id="newTodo">
+            {% block new_todo_form %}
+            <form hx-post="/todos/create" hx-target=".todoList" hx-swap="beforeend"
+                hx-on::after-request="this.reset()"
+            >
+                <input type="text" name="value" placeholder="New todo..." required>
+                <input type="submit" value="[Submit]">
+            </form>
+            {% endblock %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="todoList">
+            {% for todo in todos %}
+            {% block todo_item scoped %}
+            <div class="item" hx-boost="true" hx-target="this" hx-replace-url="false">
+                {% if todo.completed %}
+                    <a class="link" href="/todos/{{todo.id}}/toggle">[&#10004;]</a>
+                {% else %}
+                    <a class="link" href="/todos/{{todo.id}}/toggle">[_]</a>
+                {% endif %}
+                <p class="value">{{todo.value}}</p>
+                <span class="delete"
+                    hx-delete="/todos/{{todo.id}}"
+                    hx-swap="outerHTML"
+                >&#10006;</span>
+            </div>
+            {% endblock %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
